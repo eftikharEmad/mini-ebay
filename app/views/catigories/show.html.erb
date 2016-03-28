@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<%#Link to go through the pages%>
+<%= link_to 'Home', catigories_path%> |
+<%= link_to 'Back', :back %> |
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+<p>
+  <strong>Catigory:</strong>
+  <%= @catigory.category_name  %>
+</p>
+<p>
+  <%#for Liked in user list of catigories will be and the Items that belong to no sub_catigory%>
+  <%#list all subcatigories%>
+  <% @sub_categories = Catigory.where(sub_category_id: @catigory.category_id ) %>
+  <% if @sub_categories.size != 0 %>
+    <strong>Sub categories:</strong>
+    <% (@sub_categories.size).times do |index| %>
+       <%=link_to "#{@sub_categories[index].category_name}", catigory_path(@sub_categories[index]) %>
+    <% end %>
+  <% else %>
+  <%#go to show the Items related to this Catigory for both signed and unsigned%>
+    <%= link_to 'Items', catigory_items_path( @catigory)%>
+    <%= (link_to 'Add Items', new_catigory_item_path( @catigory)) if current_user.admin%>
+  <% end %>
+<br>
+<%= (link_to 'Edit', edit_catigory_path(@catigory)) if current_user.admin %>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Invocies</h1>
+<% @cart_id = User.find_by(id:current_user.id).cart_id %>
+<%@items_selected = ItemCart.where(cart_id: @cart_id)%>
+
+<%@ids ||= []%>
+<%@items_selected.size.times do |i| %>
+  <% @ids[i] = @items_selected[i].item_id %>
+<%end%>
+<% @item_count = {}%>
+<% @uniq_ids = @ids.uniq%>
+<% @uniq_ids.each do |id|%>
+  <%@ids.count(id)%>
+<% end%>
+<h3>Number of Items:</h3>
+<%@uniq_ids.size%>
+<table>
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Count</th>
+      <th>Total price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@uniq_ids.size.times do |i|%>
+    <%@item = Item.find_by(id: @uniq_ids[i])%>
+      <tr>
+        <td><%= @item.item_name %></td>
+        <td><%= @count = @ids.count(@uniq_ids[i]) %></td>
+        <td><%= @item.item_preice.to_f * @count%></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br><%= (link_to 'New Invocy', new_invocy_path ) if current_user.admin? %>

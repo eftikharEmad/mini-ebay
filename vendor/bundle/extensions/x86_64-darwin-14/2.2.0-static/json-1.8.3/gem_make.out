@@ -1,0 +1,13 @@
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/json-1.8.3/ext/json
+/Users/eftikhar/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160322-1072-m538uo.rb extconf.rb
+creating Makefile
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR=" install

@@ -1,0 +1,6 @@
+<h1>Editing Item</h1>
+<% @item.category_id = params[:category_id]%>
+<%@item.item_id = @item.id%>
+<%= render 'form' %>
+<%= link_to 'Show', catigory_item_path(id: @item )%> |
+<%= link_to 'Back', catigory_item_path %>

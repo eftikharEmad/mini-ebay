@@ -1,0 +1,31 @@
+<%#the header%>
+<p id="notice"></p>
+<%= link_to "Home", root_path %> |
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %><br>
+
+<table>
+  <thead>
+    <tr>
+      <th><h3>Listing Catigories</h3></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catigories.each do |catigory| %>
+      <tr>
+        <%if catigory.sub_category_id == 0%>
+            <td><%= (link_to "#{catigory.category_name}", catigory_path(catigory)) %></td>
+        <%else%>
+            <td><%= link_to "#{catigory.category_name}", catigory_items_path(id: catigory, catigory_id:catigory.category_id)%></td>
+        <%end%>
+        <td><%= (link_to 'Edit', edit_catigory_path(catigory)) if current_user.admin %></td>
+        <td><%= (link_to 'Destroy', catigories_path, method: :delete, data: { confirm: 'Are you sure?' }) if current_user.admin %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= (link_to 'New Catigory', new_catigory_path ) if current_user.admin%>

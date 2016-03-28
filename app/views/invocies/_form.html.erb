@@ -1,0 +1,29 @@
+<%= form_for(@invocy) do |f| %>
+  <% if @invocy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invocy.errors.count, "error") %> prohibited this invocy from being saved:</h2>
+
+      <ul>
+      <% @invocy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cart_id %><br>
+    <%= f.number_field :cart_id %>
+  </div>
+  <div class="field">
+    <%= f.label :invocice_id %><br>
+    <%= f.number_field :invocice_id %>
+  </div>
+  <div class="field">
+    <%= f.label :total_price %><br>
+    <%= f.text_field :total_price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

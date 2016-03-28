@@ -1,0 +1,5 @@
+
+<%@item_cart.cart_id = Cart.find_by(user_id: current_user.id).id%>
+<%@item_cart.item_id = params[:item_id]%>
+<%= render 'form' %>
+<%= link_to 'Back', catigories_path %>

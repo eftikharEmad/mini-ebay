@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Carts</h1>
+<%if current_user || !current_user.admin?%>
+<% @user_cart_id = (User.find_by(id: current_user.id)).cart_id%>
+<%  if @user_cart_id.nil?%>
+  <%=  'you have not choose any Item yet'%>
+  <%=  link_to 'Catigories', catigories_path %>
+<%  else%>
+   <% @user_carts = ItemCart.where(cart_id: @user_cart_id) %>
+   <%=@user_cart_id%>
+     <%if @user_carts.size == 0%>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Price</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% @user_carts.size.times do |index| %>
+            <% @item = Item.find_by(id: @user_carts[index].item_id) %>
+            <tr>
+               <td><%=@item.item_name %></td>
+               <td><%=@item.item_size %></td>
+               <td><%=@item.item_color %></td>
+               <td><%=@item.item_preice %></td>
+               <td><%=link_to 'Delete', item_cart_path(ItemCart.find_by(item_id: @user_carts[index].item_id).id), method: :delete,data: { confirm: 'Are you sure?' }%></td>
+
+             </tr>
+            <% end %>
+          </tbody>
+        </table>
+     <%else%>
+     <%= 'No Items Has been selected'%>
+     <%end%>
+<%  end%>
+<%else%>
+<table>
+  <thead>
+    <tr>
+      <th>Cart</th>
+      <th>Paid</th>
+      <th>Unpaid</th>
+      <th>Total price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carts.each do |cart| %>
+      <tr>
+        <td><%= cart.cart_id %></td>
+        <td><%= cart.paid %></td>
+        <td><%= cart.unpaid %></td>
+        <td><%= cart.total_price %></td>
+        <td><%= link_to 'Show', cart %></td>
+        <td><%= link_to 'Edit', edit_cart_path(cart) if current_user.admin? %></td>
+        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+
+<br><%= link_to "Home",       root_path %>
+<br><%= (link_to 'New Cart', new_cart_path ) if current_user.admin? %>

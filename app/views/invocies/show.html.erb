@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @invocy.cart_id %>
+</p>
+
+<p>
+  <strong>Invocice:</strong>
+  <%= @invocy.invocice_id %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @invocy.total_price %>
+</p>
+
+<%= link_to 'Edit', edit_invocy_path(@invocy) %> |
+<%= link_to 'Back', invocies_path %>

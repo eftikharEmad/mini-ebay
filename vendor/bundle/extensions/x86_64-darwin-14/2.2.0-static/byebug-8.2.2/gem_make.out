@@ -1,0 +1,20 @@
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+/Users/eftikhar/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160322-1072-e4owwf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+ld: warning: directory not found for option '-L/Users/haven/.sm/pkg/active/lib'
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.bundle ./.gem.20160322-1072-gomf7i/byebug

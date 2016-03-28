@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= Item.find_by( params[:item_id]).item_name%>
+</p>
+
+
+<%= (link_to 'Edit', edit_item_cart_path(@item_cart) ) if current_user.admin%> |
+<%= link_to 'Back', catigories_path %>

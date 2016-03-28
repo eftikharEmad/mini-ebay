@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cart_id: 1
+  paid: 1.5
+  unpaid: 1.5
+  total_price: 1.5
+  user_id: 1
+
+two:
+  cart_id: 1
+  paid: 1.5
+  unpaid: 1.5
+  total_price: 1.5
+  user_id: 1

@@ -1,0 +1,16 @@
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+/Users/eftikhar/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160322-8301-1gr1r5w.rb extconf.rb
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/eftikhar/Desktop/ebay.com/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

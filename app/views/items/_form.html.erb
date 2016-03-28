@@ -1,0 +1,33 @@
+<%= form_for(@item, :url => catigory_items_path(:id)) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_name %><br>
+    <%= f.text_field :item_name %>
+  </div>
+  <div class="field">
+    <%= f.label :item_color %><br>
+    <%= f.text_field :item_color %>
+  </div>
+  <div class="field">
+    <%= f.label :item_size%><br>
+    <%= f.number_field :item_size %>
+  </div>
+  <div class="field">
+    <%= f.label :item_preice %><br>
+    <%= f.text_field :item_preice %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
