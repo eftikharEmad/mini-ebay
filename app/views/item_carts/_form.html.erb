@@ -11,15 +11,17 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.hidden_field :item_id , value: params[:item_id]%>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :cart_id, value: @cart %>
+  </div>
+
+  <div class="field">
     <%= f.label :number_count%><br>
     <%= f.number_field :number_count %>
   </div>
-    <%#<div class="field"> = f.label :item_id   </div>%>
-    <%#= f.number_field :item_id %>
 
-
-    <%#  <div class="field">= f.label :cart_id </div>%>
-    <%#= f.number_field :cart_id %>
 
     <div class="actions">
       <%= f.submit %>

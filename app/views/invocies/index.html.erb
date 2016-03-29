@@ -1,20 +1,11 @@
 <p id="notice"><%= notice %></p>
+<%= link_to "Home",       root_path %>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 
 <h1>Listing Invocies</h1>
-<% @cart_id = User.find_by(id:current_user.id).cart_id %>
+<% @cart_id = Cart.find_by(user_id: current_user.id).id %>
 <%@items_selected = ItemCart.where(cart_id: @cart_id)%>
-
-<%@ids ||= []%>
-<%@items_selected.size.times do |i| %>
-  <% @ids[i] = @items_selected[i].item_id %>
-<%end%>
-<% @item_count = {}%>
-<% @uniq_ids = @ids.uniq%>
-<% @uniq_ids.each do |id|%>
-  <%@ids.count(id)%>
-<% end%>
-<h3>Number of Items:</h3>
-<%@uniq_ids.size%>
+<%@total_count = 0%>
 <table>
   <thead>
     <tr>
@@ -26,11 +17,12 @@
   </thead>
 
   <tbody>
-    <%@uniq_ids.size.times do |i|%>
-    <%@item = Item.find_by(id: @uniq_ids[i])%>
+    <%@items_selected.size.times do |i|%>
+    <%@item = Item.find_by(id: @items_selected[i].item_id)%>
       <tr>
         <td><%= @item.item_name %></td>
-        <td><%= @count = @ids.count(@uniq_ids[i]) %></td>
+        <td><%= @count = @items_selected[i].number_count%></td>
+        <%@total_count = @total_count + @count%>
         <td><%= @item.item_preice.to_f * @count%></td>
 
       </tr>
@@ -38,6 +30,6 @@
   </tbody>
 </table>
 
-
+<h3>Number of Items:</h3><%=@total_count %>
 
 <br><%= (link_to 'New Invocy', new_invocy_path ) if current_user.admin? %>

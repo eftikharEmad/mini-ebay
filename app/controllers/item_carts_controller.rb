@@ -14,7 +14,14 @@ class ItemCartsController < ApplicationController
 
   # GET /item_carts/new
   def new
-    redirect_to new_cart_path if User.find_by(current_user).cart_id.nil?
+    if Cart.find_by(user_id: current_user.id).nil?
+      @cart = Cart.new
+      @cart.cart_id = @cart.id
+      @cart.user_id = current_user.id
+      @cart.save
+    else
+      @cart = Cart.find_by(user_id: current_user.id ).id
+    end
     @item_cart = ItemCart.new
   end
 
@@ -25,6 +32,7 @@ class ItemCartsController < ApplicationController
   # POST /item_carts
   # POST /item_carts.json
   def create
+    
     @item_cart = ItemCart.new(item_cart_params)
 
     respond_to do |format|
@@ -71,6 +79,6 @@ class ItemCartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_cart_params
-      params.require(:item_cart).permit(:item_id, :cart_id)
+      params.require(:item_cart).permit(:item_id, :cart_id, :number_count)
     end
 end

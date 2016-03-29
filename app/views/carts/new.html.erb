@@ -4,4 +4,3 @@
   <% @cart.total_price= 0.0 %>
   <% @cart.paid = 0 %>
   <% @cart.cart_id = @cart.id%>
-  <%User.update(current_user.id, cart_id: @cart.id)%>
